@@ -132,14 +132,32 @@ reconciles the scheduled interval against `run_interval_days`, logs to
 two weeks.
 
 ```powershell
-$action  = New-ScheduledTaskAction -Execute 'pwsh.exe' `
+$action  = New-ScheduledTaskAction -Execute 'C:\Program Files\PowerShell\7\pwsh.exe' `
   -Argument '-NoProfile -ExecutionPolicy Bypass -File "C:\path\to\scripts\run-invoice-sync.ps1"'
 $trigger = New-ScheduledTaskTrigger -Daily -At 09:00 -DaysInterval 15
 Register-ScheduledTask -TaskName 'InvoiceSync' -Action $action -Trigger $trigger
 ```
 
-Use PowerShell 7 (`pwsh.exe`). Windows PowerShell 5.1 writes redirected
-output as UTF-16 and needs a BOM to parse non-ASCII source correctly.
+**Give the full path to `pwsh.exe`, not the bare name.** If PowerShell 7
+came from the Microsoft Store, `pwsh.exe` on your PATH is a per-user app
+execution alias that Task Scheduler frequently cannot resolve — the task
+fails instantly with result `0x80070002` (file not found), writes no log,
+and looks exactly like nothing happened. Find the real binary with
+`(Get-Command pwsh).Source`, or use `C:\Program Files\PowerShell\7\pwsh.exe`
+from the MSI install.
+
+Use PowerShell 7 rather than Windows PowerShell 5.1: 5.1 writes redirected
+output as UTF-16 (making logs awkward to read) and needs a byte-order mark
+to parse non-ASCII source correctly.
+
+Check a run afterwards with:
+
+```powershell
+Get-ScheduledTaskInfo -TaskName 'InvoiceSync' | Select LastRunTime, LastTaskResult
+```
+
+`LastTaskResult` of `0` means the script ran; anything else means it never
+started, and `logs/` will confirm — no new file, no run.
 
 ## Gotchas worth knowing
 
