@@ -1,0 +1,50 @@
+[
+  {
+    "match": "anthropic.com",
+    "name": "Anthropic"
+  },
+  {
+    "match": "openai.com",
+    "name": "OpenAI"
+  },
+  {
+    "match": "github.com",
+    "name": "GitHub"
+  },
+  {
+    "match": "microsoft.com",
+    "name": "Microsoft"
+  },
+  {
+    "match": "stripe.com",
+    "name": "Stripe"
+  },
+  {
+    "match": "aws.amazon.com",
+    "name": "AWS"
+  },
+  {
+    "match": "cloud.google.com",
+    "name": "Google Cloud"
+  },
+  {
+    "match": "vercel.com",
+    "name": "Vercel"
+  },
+  {
+    "match": "jetbrains.com",
+    "name": "JetBrains"
+  },
+  {
+    "match": "digitalocean.com",
+    "name": "DigitalOcean"
+  },
+  {
+    "match": "cloudflare.com",
+    "name": "Cloudflare"
+  },
+  {
+    "match": "accountant@example.com",
+    "name": "Accountant"
+  }
+]

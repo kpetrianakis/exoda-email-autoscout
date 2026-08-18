@@ -1,0 +1,9 @@
+{
+  "run_interval_days": 15,
+  "notify_email": "you@example.com",
+  "mirror_root": "C:\\Users\\you\\OneDrive\\Documents\\Invoices",
+  "min_attachment_bytes": 5120,
+  "backfill_start": "2026-01-01",
+  "use_llm_for_links": true,
+  "llm_model": "claude-haiku-4-5-20251001"
+}

@@ -1,0 +1,17 @@
+invoices/*/
+invoices/.tmp/
+invoices/_manifest.json
+logs/
+.claude/worktrees/
+invoices/.pending_summary.json
+__pycache__/
+
+# Local configuration -- real values stay on this machine.
+# Committed equivalents live alongside as *.example.json.
+invoices/_config.json
+invoices/_vendors.json
+invoices/_exclude.json
+invoices/_notes.md
+# Internal build log of the original LLM-driven implementation; kept
+# locally for reference but superseded by the design doc.
+docs/superpowers/plans/
